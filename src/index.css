@@ -1,0 +1,39 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family:spiderman;
+  src:url('src/assets/spiderman.woff')
+}
+@font-face {
+  font-family:Montserrat;
+  src:url('src/assets/Montserrat-Regular.ttf')
+}
+
+*{
+  margin: 0;
+  padding:0;
+  box-sizing:border-box
+}
+
+#root,
+body {
+  position:fixed;
+  inset:0;
+  min-height: 100vh;
+  font-family:Montserrat;
+  background:black
+}
+
+
+
+
+
+
+.glitching {
+		filter: url(#filter);
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+  }
