@@ -1,5 +1,7 @@
+import About from "./components/about/About";
+import Hero from "./components/hero/Hero";
 import Intro from "./components/intro/Intro";
-import Nav from "./components/nav/Nav";
+
 import Spiderman from "./components/spiderman/Spiderman";
 import { Suspense } from "react";
 
@@ -9,11 +11,12 @@ import { Suspense } from "react";
 export default function App() {
   return(  
     <>
-    {/* <Intro/> */}
     <Suspense fallback={<Intro/>}>
-    <Nav/>
     <Spiderman />
     </Suspense>
+    {/* <Intro/> */}
+    <Hero/>
+    <About/>
     </>
     
     );

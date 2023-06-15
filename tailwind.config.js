@@ -7,9 +7,11 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      spiderman: ['spiderman'],
-      montserrat: [ 'Montserrat'],
+      wantone: ['wantone'],
     },
+    colors:{
+      'mainblue':'#0000ff'
+    }
   },
   plugins: [],
 }

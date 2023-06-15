@@ -36,21 +36,16 @@ function startNow(){
 function stopMusic(){
     musicRef.current.pause()
 }
-
-
-
-
   return (
     <div className="fixed inset-0 w-full flex gap-5 flex-col justify-center items-center text-red-800 font-bold text-3xl bg-black z-20 py-10" ref={loaderRef}>
       <img src={mask} alt="logo" ref={maskRef} className=" glitching" />
-      <h3 className=" font-spiderman  text-5xl glitching" ref={loadingRef}>lading</h3>
-      <button className=" font-spiderman  text-5xl glitching hidden" ref={startRef} onClick={startNow}>Strt</button>
-
+      <h3 className=" font-spiderman  text-5xl glitching" ref={loadingRef}>loading</h3> 
+      <button className=" font-spiderman  text-5xl glitching hidden" ref={startRef} onClick={startNow}>Start</button>
       <audio loop  autoPlay ref={musicRef}  src={music}></audio>
       <svg version="1.1" className=" h-0 w-0" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 100">
         <defs>
           <filter id="filter">
-            <feFlood floodColor="black" result="black" />
+            <feFlood floodColor="black" result="black" /> 
             <feFlood floodColor="blue" result="flood1" />
             <feFlood floodColor="blue" result="flood2" />
             <feOffset in="SourceGraphic" dx="3" dy="0" result="off1a" />

@@ -1,39 +1,65 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
-  font-family:spiderman;
-  src:url('src/assets/spiderman.woff')
+  font-family: wantone;
+  src: url("src/assets/WANTONE.ttf");
 }
-@font-face {
-  font-family:Montserrat;
-  src:url('src/assets/Montserrat-Regular.ttf')
-}
-
-*{
+* {
   margin: 0;
-  padding:0;
-  box-sizing:border-box
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#root,
-body {
-  position:fixed;
-  inset:0;
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+
+body,
+#root {
+  position: absolute;
+  inset: 0;
   min-height: 100vh;
-  font-family:Montserrat;
-  background:black
+  background: black;
+  font-family: wantone;
+  color:white;
+  text-transform:capitalize
 }
 
-
-
-
-
+#root > div:nth-child(1) {
+  position: fixed !important;
+  inset: 0;
+}
 
 .glitching {
-		filter: url(#filter);
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-  }
+  filter: url(#filter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.name {
+  position: relative;
+  font-size: clamp(80px, 20vw, 300px);
+  background: -webkit-linear-gradient(rgb(0, 0, 255, 40%) 40%, rgb(255, 0, 0) 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: blue;
+  mix-blend-mode: hard-light;
+  line-height:normal
+}
+h2.name {
+font-size: clamp(80px, 10vw, 200px);
+}
+
+.floating {
+  animation: floating 2s ease-in-out alternate infinite
+}
+
+@keyframes floating {
+  to{transform:translatey(20px)}
+}
+
+
