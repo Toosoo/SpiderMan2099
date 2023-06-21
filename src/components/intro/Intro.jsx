@@ -4,6 +4,9 @@ import { gsap } from "gsap";
 import { useRef } from "react";
 import music from "/src/assets/spiderman2099.mp3";
 
+
+
+
 export default function Intro({ timeline}) {
   const { active } = useProgress();
   let loaderRef = useRef();
@@ -35,12 +38,12 @@ export default function Intro({ timeline}) {
     musicRef.current.pause();
   }
   return (
-    <div className=" bg-black fixed inset-0 w-full flex gap-5 flex-col justify-center items-center text-red font-bold text-3xl  z-20 py-10" ref={loaderRef}>
+    <div  className="  bg-black fixed inset-0 w-full flex gap-5 flex-col justify-center items-center text-red font-bold text-3xl  z-20 py-10" ref={loaderRef}>
       <img src={mask} alt="logo" ref={maskRef} className=" glitching" />
-      <h3 className=" font-spiderman  text-5xl glitching" ref={loadingRef}>
+      <h3 className="   text-5xl glitching" ref={loadingRef}>
         loading
       </h3>
-      <button className=" font-spiderman  text-5xl glitching hidden" ref={startRef} onClick={startNow}>
+      <button className="   text-5xl glitching hidden" ref={startRef} onClick={startNow}>
         Start
       </button>
       <p className="text-sm">

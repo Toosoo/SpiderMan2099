@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      wantone: ['wantone'],
-      airnt: ['airnt'],
+      wantone: 'wantone',
+      airnt: 'airnt',
     },
     colors:{
       'mainblue':'#0000ff',
