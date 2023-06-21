@@ -8,9 +8,12 @@ export default {
     extend: {},
     fontFamily: {
       wantone: ['wantone'],
+      airnt: ['airnt'],
     },
     colors:{
-      'mainblue':'#0000ff'
+      'mainblue':'#0000ff',
+      'black':'#000',
+      'red':'#ff0000'
     }
   },
   plugins: [],

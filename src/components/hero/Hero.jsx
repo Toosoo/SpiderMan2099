@@ -1,14 +1,29 @@
-export default function Hero() {
+import { gsap } from "gsap";
+import { useLayoutEffect, useRef } from "react";
+
+export default function Hero({ timeline }) {
+  const titleRef = useRef();
+
+  useLayoutEffect(() => {
+    gsap.to(titleRef.current, {
+      opacity: 1,
+      duration: 1,
+      ease: "power2.inOut",
+      onComplete: () => {
+        console.log("hero");
+      },
+    });
+  }, [timeline]);
+
   return (
-    <section className="relative w-full  h-full px-10 md:px-20">
-      <h1 className="name text-center md:text-start">Miguel</h1>
-      <div className="flex justify-between items-center">
-        <p className=" w-96  hidden lg:block"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, dignissimos facere quidem alias nam ipsam itaque quas rem id ducimus. </p>
-        <h2 className="name mx-auto md:mx-0 w-fit md:ms-auto">O'hara</h2>
+    <section className="relative w-full h-full p-10 md:p-20 hero">
+      <div className="flex flex-col justify-center items-center text-center gap-24">
+        <h1 className="name tracking-widest opacity-0" ref={titleRef}>
+          2099
+        </h1>
+        <p className=" lg:w-1/4 text-xl">I'm not like the others. I don't always like what I have to do. But I know I have to be the one to do it.</p>
       </div>
-
-      <p className="absolute bottom-10 hidden lg:block text-mainblue">Earth-928</p>
-
+      <p className="absolute bottom-10 hidden lg:block text-mainblue">earth-928</p>
       <p className="absolute bottom-10 flex flex-col items-center gap-3 left-1/2 text-xl">
         scroll
         <svg className="floating" width="20" viewBox="0 0 28 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,8 +33,6 @@ export default function Hero() {
           />
         </svg>
       </p>
-
-     
     </section>
   );
 }

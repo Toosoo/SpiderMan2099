@@ -2,50 +2,55 @@ import mask from "/src/assets/mask.svg";
 import { useProgress } from "@react-three/drei";
 import { gsap } from "gsap";
 import { useRef } from "react";
-import music from '/src/assets/spiderman2099.mp3'
+import music from "/src/assets/spiderman2099.mp3";
 
-export default function Intro() {
+export default function Intro({ timeline}) {
   const { active } = useProgress();
   let loaderRef = useRef();
   let maskRef = useRef();
-  let startRef = useRef()
-  let loadingRef = useRef()
-  let musicRef = useRef()
+  let startRef = useRef();
+  let loadingRef = useRef();
+  let musicRef = useRef();
 
   if (active === true && startRef.current) {
-    //    gsap.to(loaderRef.current,{
-    //     opacity:0,
-    //     duration:2,
-    //     ease:'power2.inOut',
-    //    })
-    loadingRef.current.style = 'display:none'
-    startRef.current.style = 'display:block'
-    }
+    loadingRef.current.style = "display:none";
+    startRef.current.style = "display:block";
+  }
 
-function startNow(){
+  function startNow() {
     musicRef.current.play()
-    gsap.to(loaderRef.current,{
-        opacity:0,
-        duration:1,
-        ease:'power2.inOut',
-        onComplete:()=>{
-            loaderRef.current.style='visibility:hidden'
-        }
-    })
-}
-function stopMusic(){
-    musicRef.current.pause()
-}
+
+      timeline.to(
+        loaderRef.current,
+        { 
+          opacity: 0,
+          duration: 1,
+          ease: "power2.inOut",
+          onComplete: () => {
+            loaderRef.current.style = "visibility:hidden";
+          },
+        });
+  }
+  function stopMusic() {
+    musicRef.current.pause();
+  }
   return (
-    <div className="fixed inset-0 w-full flex gap-5 flex-col justify-center items-center text-red-800 font-bold text-3xl bg-black z-20 py-10" ref={loaderRef}>
+    <div className=" bg-black fixed inset-0 w-full flex gap-5 flex-col justify-center items-center text-red font-bold text-3xl  z-20 py-10" ref={loaderRef}>
       <img src={mask} alt="logo" ref={maskRef} className=" glitching" />
-      <h3 className=" font-spiderman  text-5xl glitching" ref={loadingRef}>loading</h3> 
-      <button className=" font-spiderman  text-5xl glitching hidden" ref={startRef} onClick={startNow}>Start</button>
-      <audio loop  autoPlay ref={musicRef}  src={music}></audio>
+      <h3 className=" font-spiderman  text-5xl glitching" ref={loadingRef}>
+        loading
+      </h3>
+      <button className=" font-spiderman  text-5xl glitching hidden" ref={startRef} onClick={startNow}>
+        Start
+      </button>
+      <p className="text-sm">
+        I'm still working on it , thats only first chapter
+      </p>
+      <audio loop autoPlay ref={musicRef} src={music}></audio>
       <svg version="1.1" className=" h-0 w-0" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 100">
         <defs>
           <filter id="filter">
-            <feFlood floodColor="black" result="black" /> 
+            <feFlood floodColor="black" result="black" />
             <feFlood floodColor="blue" result="flood1" />
             <feFlood floodColor="blue" result="flood2" />
             <feOffset in="SourceGraphic" dx="3" dy="0" result="off1a" />

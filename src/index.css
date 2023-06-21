@@ -6,6 +6,10 @@
   font-family: wantone;
   src: url("src/assets/WANTONE.ttf");
 }
+@font-face {
+  font-family: airnt;
+  src: url("src/assets/AirntQuantum.otf");
+}
 * {
   margin: 0;
   padding: 0;
@@ -40,7 +44,6 @@ body,
 }
 
 .name {
-  position: relative;
   font-size: clamp(80px, 20vw, 300px);
   background: -webkit-linear-gradient(rgb(0, 0, 255, 40%) 40%, rgb(255, 0, 0) 60%);
   -webkit-background-clip: text;
@@ -48,10 +51,9 @@ body,
   -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: blue;
   mix-blend-mode: hard-light;
-  line-height:normal
-}
-h2.name {
-font-size: clamp(80px, 10vw, 200px);
+  line-height:normal;
+  font-family: airnt;
+
 }
 
 .floating {
