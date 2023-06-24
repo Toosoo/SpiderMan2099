@@ -50,7 +50,7 @@ export default function Spiderman({ timeline }) {
          ease: "power2.inOut",
           y:spiderRotation,
 
-        });
+        },'<');
 
     timeline && timeline.to(
       spiderman.scene.position, {

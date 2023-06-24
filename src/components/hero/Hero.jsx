@@ -19,6 +19,23 @@ export default function Hero({ timeline }) {
       opacity:0,
       rotate:50
     });
+   timeline && timeline.from('.quote', {
+      scale:2,
+      ease: "power2.inOut",
+      stagger:.1,
+      duration:1.5,
+      opacity:0,
+      
+    });
+
+   timeline && timeline.from('.scroll-text', {
+      
+      ease: "power2.inOut",
+      stagger:.1,
+      duration:1.5,
+      opacity:0,
+      
+    });
 
 
 
@@ -31,10 +48,10 @@ export default function Hero({ timeline }) {
         <h1 className="name" ref={titleRef}>
           2099
         </h1>
-        <p className=" lg:w-1/4 text-xl">I'm not like the others. I don't always like what I have to do. But I know I have to be the one to do it.</p>
+        <p className=" quote lg:w-1/4 text-xl">I'm not like the others. I don't always like what I have to do. But I know I have to be the one to do it.</p>
       </div>
-      <p className="absolute bottom-10 hidden lg:block text-mainblue">earth-928</p>
-      <p className="absolute bottom-10 flex flex-col items-center gap-3 left-1/2 text-xl">
+      {/* <p className="absolute bottom-10 hidden lg:block text-mainblue">earth-928</p> */}
+      <p className="absolute bottom-10 flex flex-col items-center gap-3 left-1/2 text-xl scroll-text">
         scroll
         <svg className="floating" width="20" viewBox="0 0 28 42" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
