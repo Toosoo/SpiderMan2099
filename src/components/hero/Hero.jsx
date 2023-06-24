@@ -1,18 +1,23 @@
 import { gsap } from "gsap";
 import { useLayoutEffect, useRef } from "react";
-
-
+import { SplitText } from "gsap/SplitText";
+gsap.registerPlugin(SplitText)
 
 export default function Hero({ timeline }) {
   const titleRef = useRef();
 
-
-
+  
+  
   useLayoutEffect(() => {
-   timeline && timeline.from(titleRef.current, {
-      opacity: 0,
-      duration: 2,
+    let title = new SplitText(titleRef.current, {type: "chars",charsClass:'mychars'})
+
+   timeline && timeline.from('.mychars', {
+      scale:2,
       ease: "power2.inOut",
+      stagger:.1,
+      duration:1.5,
+      opacity:0,
+      rotate:50
     });
 
 
@@ -23,7 +28,7 @@ export default function Hero({ timeline }) {
   return (
     <section className="relative w-full h-full p-10 md:p-20 hero">
       <div className="flex flex-col justify-center items-center text-center gap-24">
-        <h1 className="name tracking-widest " ref={titleRef}>
+        <h1 className="name" ref={titleRef}>
           2099
         </h1>
         <p className=" lg:w-1/4 text-xl">I'm not like the others. I don't always like what I have to do. But I know I have to be the one to do it.</p>

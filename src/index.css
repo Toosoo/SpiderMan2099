@@ -42,7 +42,7 @@ body,
   -moz-osx-font-smoothing: grayscale;
 }
 
-.name {
+.name div {
   font-size: clamp(80px, 20vw, 300px);
   background: -webkit-linear-gradient(rgb(0, 0, 255, 40%) 40%, rgb(255, 0, 0) 60%);
   -webkit-background-clip: text;

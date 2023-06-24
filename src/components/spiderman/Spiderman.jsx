@@ -11,6 +11,7 @@ import { MeshBasicMaterial } from "three";
 export default function Spiderman({ timeline }) {
   let  spiderman = useGLTF("./spiderman2099-v2.glb");
   let spiderRef = useRef();
+  let spiderRotation = 3.54
 
   // const { rotation, position, color,intensity,hue,saturation } = useControls({
   //   rotation: {
@@ -39,40 +40,51 @@ export default function Spiderman({ timeline }) {
 
   // });
 
-  useLayoutEffect(() => {
-    console.log(spiderman.scene.rotation.y)
-    let RX = gsap.quickTo(spiderman.scene.rotation, "y", { duration: 0.5, ease: "sine" });
-    window.addEventListener("mousemove", (e) => {
-      // RX(e.pageX * 0.0001 + 3.54);
-      RX(e.pageX * 0.0001 );
-    });
-  }, []);
 
-  // useLayoutEffect(() => {
-  //   timeline && timeline.from(
-  //     spiderman.scene.rotation, {
-  //        duration: 2,
-  //         ease: "sine",
-  //         y:0
-  //       });
-  // }, [timeline]);
+
+  useLayoutEffect(() => {
+   
+    timeline && timeline.to(
+      spiderman.scene.rotation, {
+         duration: 2,
+         ease: "power2.inOut",
+          y:spiderRotation,
+
+        });
+
+    timeline && timeline.to(
+      spiderman.scene.position, {
+         duration: 2,
+          ease: "power2.inOut",
+          z:0,
+          onComplete:()=>{
+            let RX = gsap.quickTo(spiderman.scene.rotation, "y", { duration: 0.5, ease: "sine" });
+            window.addEventListener("mousemove", (e) => {
+              RX(e.pageX * 0.0001 + spiderRotation );
+            });
+          
+          }
+        },"<");
+    
+      
+  }, [timeline]);
 
   return (
     <Canvas camera={{ position: [0, -1, 8], fov: 30 }}>
-      {/* <EffectComposer>
+      <EffectComposer>
         <Glitch delay={[1.5, 2.5]} duration={[0.4]} strength={2} active columns={0.1} ratio={0.85} />
         <HueSaturation hue={3} saturation={1.4} />
-      </EffectComposer> */}
+      </EffectComposer> 
 
       <pointLight color={"blue"} intensity={0.2} position={[-0.28, 0, 3.95]} />
       <pointLight color={"#fff"} intensity={0.8} position={[0, 0, 3.95]} />
 
-      {/* <color args={["#000"]} attach="background" /> */}
+      
       <Environment preset={null} files="./hdr4.hdr" blur={1} />
       <Sparkles speed={0.5} color={"blue"} size={2} count={100} scale={10} />
-    <group ref={spiderRef}>
-      <primitive  object={spiderman.scene} rotation={[0, 0, 0]} position={[0, -7.6, 0]} scale={5.5} />
-    </group>
+  
+      <primitive  object={spiderman.scene} rotation={[0, -3, 0]} position={[0, -7.6, -1000]} scale={5.5} />
+
 
       {/* <mesh  position={[-1,0,0]} rotation={[0,.5,0]}>
   <planeGeometry args={[10,10]} />
