@@ -7,7 +7,7 @@ import music from "/src/assets/spiderman2099.mp3";
 
 
 
-export default function Intro({ timeline}) {
+export default function Intro({timeline}) {
   const { active } = useProgress();
   let loaderRef = useRef();
   let maskRef = useRef();
@@ -22,17 +22,17 @@ export default function Intro({ timeline}) {
 
   function startNow() {
     musicRef.current.play()
-
-      timeline.to(
+      gsap.to(
         loaderRef.current,
         { 
-          opacity: 0,
+          clipPath:'inset(0 100% 0 0)',
           duration: 1,
           ease: "power2.inOut",
           onComplete: () => {
             loaderRef.current.style = "visibility:hidden";
           },
         });
+        timeline.play()
   }
   function stopMusic() {
     musicRef.current.pause();
@@ -43,12 +43,10 @@ export default function Intro({ timeline}) {
       <h3 className="   text-5xl glitching" ref={loadingRef}>
         loading
       </h3>
-      <button className="   text-5xl glitching hidden" ref={startRef} onClick={startNow}>
+      <button className="text-5xl glitching hidden" ref={startRef} onClick={startNow}>
         Start
       </button>
-      <p className="text-sm">
-        I'm still working on it , thats only first chapter
-      </p>
+      
       <audio loop autoPlay ref={musicRef} src={music}></audio>
       <svg version="1.1" className=" h-0 w-0" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 100">
         <defs>

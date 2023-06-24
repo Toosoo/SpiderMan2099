@@ -1,24 +1,29 @@
 import { gsap } from "gsap";
 import { useLayoutEffect, useRef } from "react";
 
+
+
 export default function Hero({ timeline }) {
   const titleRef = useRef();
 
+
+
   useLayoutEffect(() => {
-    gsap.to(titleRef.current, {
-      opacity: 1,
-      duration: 1,
+   timeline && timeline.from(titleRef.current, {
+      opacity: 0,
+      duration: 2,
       ease: "power2.inOut",
-      onComplete: () => {
-        console.log("hero");
-      },
     });
+
+
+
+
   }, [timeline]);
 
   return (
     <section className="relative w-full h-full p-10 md:p-20 hero">
       <div className="flex flex-col justify-center items-center text-center gap-24">
-        <h1 className="name tracking-widest opacity-0" ref={titleRef}>
+        <h1 className="name tracking-widest " ref={titleRef}>
           2099
         </h1>
         <p className=" lg:w-1/4 text-xl">I'm not like the others. I don't always like what I have to do. But I know I have to be the one to do it.</p>

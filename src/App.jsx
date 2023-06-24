@@ -7,21 +7,26 @@ import { Suspense, useLayoutEffect, useState } from "react";
 
 export default function App() {
   const [tl, setTl] = useState();
-
+ const [word,setWord] = useState()
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
       setTl(tl);
+      tl.pause()
     });
     return () => ctx.revert();
   }, []);
 
+
+
+
+
   return (
     <>
       <Suspense fallback={<Intro />}>
-      <Spiderman  />
+      <Spiderman timeline={tl} />
       </Suspense>
-      <Intro timeline={tl} />
+      {/* <Intro  timeline={tl} /> */}
       <Hero timeline={tl}  />
       {/* <About /> */}
     </>
