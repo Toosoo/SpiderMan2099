@@ -71,10 +71,10 @@ export default function Spiderman({ timeline }) {
 
   return (
     <Canvas camera={{ position: [0, -1, 8], fov: 30 }}>
-      <EffectComposer>
+      {/* <EffectComposer>
         <Glitch delay={[1.5, 2.5]} duration={[0.4]} strength={2} active columns={0.1} ratio={0.85} />
         <HueSaturation hue={3} saturation={1.4} />
-      </EffectComposer> 
+      </EffectComposer>  */}
 
       <pointLight color={"blue"} intensity={0.2} position={[-0.28, 0, 3.95]} />
       <pointLight color={"#fff"} intensity={0.8} position={[0, 0, 3.95]} />

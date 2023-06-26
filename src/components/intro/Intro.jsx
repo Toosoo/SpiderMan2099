@@ -5,8 +5,6 @@ import { useRef } from "react";
 import music from "/src/assets/spiderman2099.mp3";
 
 
-
-
 export default function Intro({timeline}) {
   const { active } = useProgress();
   let loaderRef = useRef();
@@ -21,7 +19,7 @@ export default function Intro({timeline}) {
   }
 
   function startNow() {
-    musicRef.current.play()
+
       gsap.to(
         loaderRef.current,
         { 
@@ -34,9 +32,7 @@ export default function Intro({timeline}) {
         });
         timeline.play()
   }
-  function stopMusic() {
-    musicRef.current.pause();
-  }
+
   return (
     <div  className="  bg-black fixed inset-0 w-full flex gap-5 flex-col justify-center items-center text-red font-bold text-3xl  z-20 py-10" ref={loaderRef}>
       <img src={mask} alt="logo" ref={maskRef} className=" glitching" />

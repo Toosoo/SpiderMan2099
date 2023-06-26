@@ -6,37 +6,51 @@ gsap.registerPlugin(SplitText)
 export default function Hero({ timeline }) {
   const titleRef = useRef();
 
-  
+  function stopMusic() {
+    // musicRef.current.play()
+    // musicRef.current.pause();
+    gsap.to('.sound-charts li:nth-child(odd)',{
+      height:5,
+      stagger:.1,
+      yoyo:true,
+      repeat:-1,
+    })
+    gsap.to('.sound-charts li:nth-child(even)',{
+      height:4,
+      yoyo:true,
+      repeat:-1,
+      delay:.3,
+    })
+  }
+
+
+
   
   useLayoutEffect(() => {
-    let title = new SplitText(titleRef.current, {type: "chars",charsClass:'mychars'})
+    // let title = new SplitText(titleRef.current, {type: "chars",charsClass:'mychars'})
 
    timeline && timeline.from('.mychars', {
-      scale:2,
       ease: "power2.inOut",
       stagger:.1,
       duration:1.5,
-      opacity:0,
-      rotate:50
+      clipPath:'inset(0 0 100% 0)'
     });
    timeline && timeline.from('.quote', {
-      scale:2,
       ease: "power2.inOut",
       stagger:.1,
-      duration:1.5,
+      duration:1,
       opacity:0,
-      
+      y:-20
     });
 
    timeline && timeline.from('.scroll-text', {
       
       ease: "power2.inOut",
       stagger:.1,
-      duration:1.5,
+      duration:1,
       opacity:0,
-      
+      y:-20
     });
-
 
 
 
@@ -44,21 +58,35 @@ export default function Hero({ timeline }) {
 
   return (
     <section className="relative w-full h-full p-10 md:p-20 hero">
-      <div className="flex flex-col justify-center items-center text-center gap-24">
-        <h1 className="name" ref={titleRef}>
+      <div className="flex  justify-between items-center">
+
+        <p className="text-center">
           2099
-        </h1>
-        <p className=" quote lg:w-1/4 text-xl">I'm not like the others. I don't always like what I have to do. But I know I have to be the one to do it.</p>
+        </p>
+        <button className="playButton flex gap-3 text-red">
+          play sound 
+          <ul className="sound-charts flex justify-center items-center gap-1  h-5 ">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </button>
       </div>
+      <div className="flex flex-col justify-center items-center text-center gap-24">
+         <h1 className="name z-10" >
+          miguel
+        </h1>
+        <h1 className="name -mt-80 z-0" >
+          o'hara
+        </h1> 
+        
+      </div>
+        <p className=" quote lg:w-1/5 ">I'm not like the others. I don't always like what I have to do. But I know I have to be the one to do it.</p>
       {/* <p className="absolute bottom-10 hidden lg:block text-mainblue">earth-928</p> */}
-      <p className="absolute bottom-10 flex flex-col items-center gap-3 left-1/2 text-xl scroll-text">
-        scroll
-        <svg className="floating" width="20" viewBox="0 0 28 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M1.02928 29.446C0.61609 29.0328 0.409492 28.5462 0.409492 27.9862C0.409492 27.4262 0.61609 26.9406 1.02928 26.5293C1.44248 26.1161 1.92908 25.9095 2.48908 25.9095C3.04908 25.9095 3.5347 26.1161 3.94595 26.5293L12.1126 34.696L12.1126 2.9043C12.1126 2.36958 12.3192 1.89562 12.7324 1.48242C13.1456 1.06923 13.6196 0.86263 14.1543 0.86263C14.689 0.86263 15.163 1.06923 15.5762 1.48242C15.9894 1.89562 16.196 2.36958 16.196 2.9043L16.196 34.696L24.3626 26.5293C24.7758 26.1161 25.2624 25.9095 25.8224 25.9095C26.3824 25.9095 26.8681 26.1161 27.2793 26.5293C27.6925 26.9425 27.8991 27.4291 27.8991 27.9891C27.8991 28.5491 27.6925 29.0347 27.2793 29.446L15.6126 41.1127C15.1994 41.5259 14.7128 41.7325 14.1528 41.7325C13.5928 41.7325 13.1072 41.5259 12.696 41.1127L1.02928 29.446Z"
-            fill="white"
-          />
-        </svg>
+      <p className="absolute bottom-10 flex flex-col items-center gap-3 left-1/2  scroll-text">
+        scroll down
       </p>
     </section>
   );
