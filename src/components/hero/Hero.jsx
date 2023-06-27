@@ -1,70 +1,60 @@
 import { gsap } from "gsap";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { SplitText } from "gsap/SplitText";
-gsap.registerPlugin(SplitText)
+import spiderMusic from "/src/assets/spiderman2099.mp3";
+gsap.registerPlugin(SplitText);
 
 export default function Hero({ timeline }) {
   const titleRef = useRef();
-
-  function stopMusic() {
-    // musicRef.current.play()
-    // musicRef.current.pause();
-    gsap.to('.sound-charts li:nth-child(odd)',{
-      height:5,
-      stagger:.1,
-      yoyo:true,
-      repeat:-1,
-    })
-    gsap.to('.sound-charts li:nth-child(even)',{
-      height:4,
-      yoyo:true,
-      repeat:-1,
-      delay:.3,
-    })
-  }
-
-
+  const [music, setMusic] = useState(true);
+  const [musicStatus, setMusicStatus] = useState('Play sound');
+  let musicRef = useRef();
 
   
+
+
+  function musicControl() {
+    music ?  setMusicStatus('pause sound') : setMusicStatus('play sound')
+    music ? musicRef.current.play() : musicRef.current.pause() 
+    setMusic((music) => !music);
+  }
+
+  useLayoutEffect(()=>{
+    gsap.to(".sound-charts li:nth-child(odd)", {
+      height: 5,
+      stagger: 0.1,
+      yoyo: true,
+      repeat: -1,
+     })
+     gsap.to(".sound-charts li:nth-child(even)", {
+     height: 4,
+     delay: 0.3,
+     yoyo: true,
+     repeat: -1,
+   });
+  },[])
+
   useLayoutEffect(() => {
-    // let title = new SplitText(titleRef.current, {type: "chars",charsClass:'mychars'})
 
-   timeline && timeline.from('.mychars', {
-      ease: "power2.inOut",
-      stagger:.1,
-      duration:1.5,
-      clipPath:'inset(0 0 100% 0)'
-    });
-   timeline && timeline.from('.quote', {
-      ease: "power2.inOut",
-      stagger:.1,
-      duration:1,
-      opacity:0,
-      y:-20
-    });
-
-   timeline && timeline.from('.scroll-text', {
-      
-      ease: "power2.inOut",
-      stagger:.1,
-      duration:1,
-      opacity:0,
-      y:-20
-    });
-
-
-
+    timeline &&
+      timeline.from(".fadeIn", {
+        ease: "power4.in",
+        duration: 1.5,
+        opacity: 0,
+        stagger:.5,
+        y: -20,
+      });
+   
   }, [timeline]);
 
   return (
     <section className="relative w-full h-full p-10 md:p-20 hero">
-      <div className="flex  justify-between items-center">
-
-        <p className="text-center">
-          2099
-        </p>
-        <button className="playButton flex gap-3 text-red">
-          play sound 
+      <audio loop ref={musicRef} src={spiderMusic}></audio>
+      <div className="flex fadeIn text-red  justify-between items-center">
+        <p className="text-center">earth-928</p>
+        <p className=" text-mainblue font-bold text-3xl ">2099</p>
+        <button className="playButton capitalize flex gap-3  border-b" onClick={musicControl}>
+          {musicStatus}
           <ul className="sound-charts flex justify-center items-center gap-1  h-5 ">
             <li></li>
             <li></li>
@@ -74,20 +64,13 @@ export default function Hero({ timeline }) {
           </ul>
         </button>
       </div>
-      <div className="flex flex-col justify-center items-center text-center gap-24">
-         <h1 className="name z-10" >
-          miguel
-        </h1>
-        <h1 className="name -mt-80 z-0" >
-          o'hara
-        </h1> 
-        
+      <div className="flex flex-col justify-center items-center text-center ">
+        <h1 className=" fadeIn name text-[100px] md:text-[200px] lg:text-[300px] xl:text-[350px] z-10">miguel</h1>
+        <h1 className="fadeIn name text-[100px] md:text-[200px] lg:text-[300px] xl:text-[350px] -mt-16 md:-mt-32 lg:-mt-64  z-0">o'hara</h1>
+      <p className=" fadeIn lg:w-1/5 ">I'm not like the others. I don't always like what I have to do. But I know I have to be the one to do it.</p>
+      <p className=" fadeIn absolute bottom-10 flex flex-col items-center gap-3  scroll-text">scroll down</p>
       </div>
-        <p className=" quote lg:w-1/5 ">I'm not like the others. I don't always like what I have to do. But I know I have to be the one to do it.</p>
-      {/* <p className="absolute bottom-10 hidden lg:block text-mainblue">earth-928</p> */}
-      <p className="absolute bottom-10 flex flex-col items-center gap-3 left-1/2  scroll-text">
-        scroll down
-      </p>
+     
     </section>
   );
 }

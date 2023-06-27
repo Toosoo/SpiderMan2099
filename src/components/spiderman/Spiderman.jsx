@@ -64,7 +64,7 @@ export default function Spiderman({ timeline }) {
             });
           
           }
-        },"<");
+        },0);
     
       
   }, [timeline]);

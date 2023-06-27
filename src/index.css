@@ -27,7 +27,7 @@ body,
   min-height: 100vh;
   background: black;
   font-family: wantone;
-  color:white;
+  color:#c1c1c1;
   text-transform:capitalize
 }
 
@@ -43,7 +43,7 @@ body,
 }
 
 .name  {
-  font-size: clamp(50px, 18vw, 400px);
+  /* font-size: clamp(50px, 18vw, 400px); */
   background: -webkit-linear-gradient(rgb(0, 0, 255, 40%) 40%, rgb(255, 0, 0) 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

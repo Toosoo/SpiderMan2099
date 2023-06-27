@@ -2,7 +2,6 @@ import mask from "/src/assets/mask.svg";
 import { useProgress } from "@react-three/drei";
 import { gsap } from "gsap";
 import { useRef } from "react";
-import music from "/src/assets/spiderman2099.mp3";
 
 
 export default function Intro({timeline}) {
@@ -11,7 +10,7 @@ export default function Intro({timeline}) {
   let maskRef = useRef();
   let startRef = useRef();
   let loadingRef = useRef();
-  let musicRef = useRef();
+
 
   if (active === true && startRef.current) {
     loadingRef.current.style = "display:none";
@@ -23,8 +22,9 @@ export default function Intro({timeline}) {
       gsap.to(
         loaderRef.current,
         { 
-          clipPath:'inset(0 100% 0 0)',
-          duration: 1,
+          // clipPath:'inset(0 100% 0 0)',
+          opacity:0,
+          duration: 2,
           ease: "power2.inOut",
           onComplete: () => {
             loaderRef.current.style = "visibility:hidden";
@@ -43,7 +43,7 @@ export default function Intro({timeline}) {
         Start
       </button>
       
-      <audio loop autoPlay ref={musicRef} src={music}></audio>
+      
       <svg version="1.1" className=" h-0 w-0" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 100">
         <defs>
           <filter id="filter">
