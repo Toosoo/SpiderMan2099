@@ -34,21 +34,21 @@ export default function Hero({ timeline }) {
    });
   },[])
 
-  useLayoutEffect(() => {
+  // useLayoutEffect(() => {
 
-    timeline &&
-      timeline.from(".fadeIn", {
-        ease: "power4.in",
-        duration: 1.5,
-        opacity: 0,
-        stagger:.5,
-        y: -20,
-      });
+  //   timeline &&
+  //     timeline.from(".fadeIn", {
+  //       ease: "power4.in",
+  //       duration: 1.5,
+  //       opacity: 0,
+  //       stagger:.5,
+  //       y: -20,
+  //     });
    
-  }, [timeline]);
+  // }, [timeline]);
 
   return (
-    <section className="relative w-full h-full p-10 md:p-20 hero">
+    <section className="relative w-full h-full px-10 md:px-20 pt-10 md:pt-15 hero">
       <audio loop ref={musicRef} src={spiderMusic}></audio>
       <div className="flex fadeIn text-red  justify-between items-center">
         <p className="text-center">earth-928</p>
@@ -64,12 +64,19 @@ export default function Hero({ timeline }) {
           </ul>
         </button>
       </div>
-      <div className="flex flex-col justify-center items-center text-center ">
+      <div className="flex flex-col h-full justify-center items-center text-center ">
         <h1 className=" fadeIn name text-[100px] md:text-[200px] lg:text-[300px] xl:text-[350px] z-10">miguel</h1>
         <h1 className="fadeIn name text-[100px] md:text-[200px] lg:text-[300px] xl:text-[350px] -mt-16 md:-mt-32 lg:-mt-64  z-0">o'hara</h1>
-      <p className=" fadeIn lg:w-1/5 ">I'm not like the others. I don't always like what I have to do. But I know I have to be the one to do it.</p>
-      <p className=" fadeIn absolute bottom-10 flex flex-col items-center gap-3  scroll-text">scroll down</p>
+      <p className=" fadeIn md:w-1/2 lg:w-1/4 xl:w-1/5 ">I'm not like the others. I don't always like what I have to do. But I know I have to be the one to do it.</p>
+      
+      <div className="flex fadeIn w-full  text-red  justify-between items-center mt-auto">
+        <p>scroll down</p>
+        <div className="flex justify-center items-center gap-1">
+          <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 256 256"><path fill="currentColor" d="M128 80a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Zm48-136H80a56.06 56.06 0 0 0-56 56v96a56.06 56.06 0 0 0 56 56h96a56.06 56.06 0 0 0 56-56V80a56.06 56.06 0 0 0-56-56Zm40 152a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40V80a40 40 0 0 1 40-40h96a40 40 0 0 1 40 40ZM192 76a12 12 0 1 1-12-12a12 12 0 0 1 12 12Z"/></svg></a>
+        </div>
       </div>
+      </div>
+
      
     </section>
   );

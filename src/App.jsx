@@ -26,9 +26,9 @@ export default function App() {
       <Suspense fallback={<Intro />}>
       <Spiderman timeline={tl} />
       </Suspense>
-      <Intro  timeline={tl} />
+      {/* <Intro  timeline={tl} /> */}
       <Hero timeline={tl}  />
-      {/* <About /> */}
+      <About />
     </>
   );
 }

@@ -3,14 +3,12 @@ import { useProgress } from "@react-three/drei";
 import { gsap } from "gsap";
 import { useRef } from "react";
 
-
-export default function Intro({timeline}) {
+export default function Intro({ timeline }) {
   const { active } = useProgress();
   let loaderRef = useRef();
   let maskRef = useRef();
   let startRef = useRef();
   let loadingRef = useRef();
-
 
   if (active === true && startRef.current) {
     loadingRef.current.style = "display:none";
@@ -18,23 +16,19 @@ export default function Intro({timeline}) {
   }
 
   function startNow() {
-
-      gsap.to(
-        loaderRef.current,
-        { 
-          // clipPath:'inset(0 100% 0 0)',
-          opacity:0,
-          duration: 2,
-          ease: "power2.inOut",
-          onComplete: () => {
-            loaderRef.current.style = "visibility:hidden";
-          },
-        });
-        timeline.play()
+    gsap.to(loaderRef.current, {
+      opacity: 0,
+      duration: 2,
+      ease: "power2.inOut",
+      onComplete: () => {
+        loaderRef.current.style = "display:none";
+      },
+    });
+    timeline.play();
   }
 
   return (
-    <div  className="  bg-black fixed inset-0 w-full flex gap-5 flex-col justify-center items-center text-red font-bold text-3xl  z-20 py-10" ref={loaderRef}>
+    <div className="  bg-black fixed inset-0 w-full flex gap-5 flex-col justify-center items-center text-red font-bold text-3xl  z-20 py-10" ref={loaderRef}>
       <img src={mask} alt="logo" ref={maskRef} className=" glitching" />
       <h3 className="   text-5xl glitching" ref={loadingRef}>
         loading
@@ -42,8 +36,7 @@ export default function Intro({timeline}) {
       <button className="text-5xl glitching hidden" ref={startRef} onClick={startNow}>
         Start
       </button>
-      
-      
+
       <svg version="1.1" className=" h-0 w-0" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 100">
         <defs>
           <filter id="filter">
