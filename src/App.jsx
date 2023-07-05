@@ -10,24 +10,20 @@ export default function App() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
-      tl.pause()
+      tl.pause();
       setTl(tl);
-
     });
+
     return () => ctx.revert();
   }, []);
-
-
-
-
 
   return (
     <>
       <Suspense fallback={<Intro />}>
-      <Spiderman timeline={tl} />
+        <Spiderman timeline={tl} />
       </Suspense>
-      {/* <Intro  timeline={tl} /> */}
-      <Hero timeline={tl}  />
+      <Intro timeline={tl} />
+      <Hero timeline={tl} />
       <About />
     </>
   );
