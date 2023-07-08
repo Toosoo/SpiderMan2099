@@ -1,9 +1,8 @@
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLayoutEffect, useRef, useState } from "react";
 import { SplitText } from "gsap/SplitText";
 import spiderMusic from "/src/assets/spiderman2099.mp3";
-gsap.registerPlugin(SplitText,ScrollTrigger);
+gsap.registerPlugin(SplitText);
 
 export default function Hero({ timeline }) {
   const titleRef = useRef();
@@ -51,12 +50,7 @@ export default function Hero({ timeline }) {
       });
 
 
-      // ScrollTrigger.observe({
-      //   target: window,       
-      //   type: "wheel,touch",   
-      //   onUp: () => timeline.play(),
-      //   onDown: () => timeline.reverse(),
-      // })
+     
 
 
   }, [timeline]);

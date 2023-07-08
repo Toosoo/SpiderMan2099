@@ -8,7 +8,6 @@ export default {
     extend: {},
     fontFamily: {
       wantone: 'wantone',
-      airnt: 'airnt',
     },
     colors:{
       'mainblue':'#0000ff',

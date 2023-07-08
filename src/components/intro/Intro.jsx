@@ -29,7 +29,7 @@ export default function Intro({ timeline }) {
 
   return (
     <div className="  bg-black fixed inset-0 w-full flex gap-5 flex-col justify-center items-center text-red font-bold text-3xl  z-20 py-10" ref={loaderRef}>
-      <img src={mask} alt="logo" ref={maskRef} className=" glitching" />
+      <img src={mask} alt="logo" ref={maskRef} className="mt-auto glitching" />
       <h3 className="   text-5xl glitching" ref={loadingRef}>
         loading
       </h3>
@@ -79,6 +79,13 @@ export default function Intro({ timeline }) {
           </filter>
         </defs>
       </svg>
+
+      <small className=" text-sm mt-auto capitalize text-center">
+        Miguel O'Hara model by 
+        <a href="https://sketchfab.com/CVRxEarth" target="_blank" className=" text-mainblue">
+           CVRxEarth
+        </a>
+      </small>
     </div>
   );
 }

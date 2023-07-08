@@ -4,15 +4,23 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Center, Environment, Sparkles, useGLTF, useMatcapTexture, useTexture, useAnimations, MeshReflectorMaterial } from "@react-three/drei";
 import { useControls } from "leva";
 import { HueSaturation, Bloom, EffectComposer, Glitch } from "@react-three/postprocessing";
-import { Suspense, useLayoutEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 
 
 export default function Spiderman({ timeline }) {
-  let  spiderman = useGLTF("./spiderman2099-v2.glb");
-  let spiderRef = useRef();
-  let spiderRotation = 3.54
+  let  spiderman = useGLTF("./spiderman2099.glb");
+
+  
+  // let spiderTl = gsap.timeline({
+  //   scrollTrigger:{
+  //     trigger:'#root',
+  //     scrub:1,
+  //     start:'top top',
+  //     end:'+=2000px',
+  //   }
+  // })
   
 
   // const { rotation, position, color,intensity,hue,saturation } = useControls({
@@ -48,9 +56,15 @@ export default function Spiderman({ timeline }) {
    
     timeline && timeline.to(
       spiderman.scene.rotation, {
-         duration: 2,
+         duration: 3,
          ease: "power2.inOut",
-          y:spiderRotation,
+          y:0,
+          onComplete:()=>{
+            let RX = gsap.quickTo(spiderman.scene.rotation, "y", { duration: 0.5, ease: "sine" });
+            window.addEventListener("mousemove", (e) => {
+              RX(e.pageX * 0.0001  );
+            });
+          }
         },0);
 
     timeline && timeline.to(
@@ -60,29 +74,29 @@ export default function Spiderman({ timeline }) {
           z:0,
         },0);
 
-        gsap.to(spiderman.scene.rotation,{
-          y:0,
-          scrollTrigger:{
-            trigger:'#root',
-            scrub:1,
-            start:'top top',
-            end:'+=3000px'
-          }
-        })
+       
+       
+       
 
-        // let RX = gsap.quickTo(spiderman.scene.rotation, "y", { duration: 0.5, ease: "sine" });
-        // window.addEventListener("mousemove", (e) => {
-        //   RX(e.pageX * 0.0001 + spiderRotation );
-        // });
- 
-  }, [timeline,spiderRotation]);
+        // spiderTl.to(spiderman.scene.rotation,{
+        //   y:0, 
+       
+        // }) 
+
+
+
+
+  }, [timeline]);
+
+
+
 
   return (
     <Canvas camera={{ position: [0, -1, 8], fov: 30 }}>
-      {/* <EffectComposer>
+    <EffectComposer>
         <Glitch delay={[1.5, 2.5]} duration={[0.4]} strength={2} active columns={0.1} ratio={0.85} />
         <HueSaturation hue={3} saturation={1.4} />
-      </EffectComposer>    */}
+      </EffectComposer>  
 
       <pointLight color={"blue"} intensity={0.2} position={[-0.28, 0, 3.95]} />
       <pointLight color={"#fff"} intensity={0.8} position={[0, 0, 3.95]} />
@@ -91,7 +105,9 @@ export default function Spiderman({ timeline }) {
       <Environment preset={null} files="./hdr4.hdr" blur={1} />
       <Sparkles speed={0.5} color={"blue"} size={2} count={100} scale={10} />
   
-      <primitive  object={spiderman.scene} rotation={[0, spiderRotation, 0]} position={[0, -7.6, -1000]} scale={5.5} />
+
+      <primitive  object={spiderman.scene} rotation={[0, 7, 0]} position={[0, -7.6, -1000]} scale={4.5} />
+
 
 
       {/* <mesh  position={[-1,0,0]} rotation={[0,.5,0]}>

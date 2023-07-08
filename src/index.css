@@ -6,10 +6,7 @@
   font-family: 'wantone';
   src: url("./assets/WANTONE.ttf");
 }
-@font-face {
-  font-family: 'airnt';
-  src: url("./assets/AirntQuantum.otf");
-} 
+
 * {
   margin: 0;
   padding: 0;
