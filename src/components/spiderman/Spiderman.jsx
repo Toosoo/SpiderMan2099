@@ -73,13 +73,10 @@ export default function Spiderman({ timeline }) {
         <Glitch delay={[1.5, 2.5]} duration={[0.4]} strength={2} active columns={0.1} ratio={0.85} />
         <HueSaturation hue={3} saturation={1.4} />
       </EffectComposer>
-
       <pointLight color={"blue"} intensity={0.2} position={[-0.28, 0, 3.95]} />
       <pointLight color={"#F4E99B"} intensity={0.8} position={[0, 0, 3.95]} />
-
       <Environment preset={null} files="./hdr4.hdr" blur={1} />
       <Sparkles speed={0.5} color={"blue"} size={2} count={100} scale={10} />
-
       <primitive object={spiderman.scene} rotation={[0, 7, 0]} position={[0, -7.6, -1000]} scale={4.5} />
       {/* <mesh  position={[-1,0,0]} rotation={[0,.5,0]}>
   <planeGeometry args={[10,10]} />
