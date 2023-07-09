@@ -4,7 +4,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Center, Environment, Sparkles, useGLTF, useMatcapTexture, useTexture, useAnimations, MeshReflectorMaterial } from "@react-three/drei";
 import { useControls } from "leva";
 import { HueSaturation, Bloom, EffectComposer, Glitch } from "@react-three/postprocessing";
-import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -13,15 +13,7 @@ export default function Spiderman({ timeline }) {
   let  spiderman = useGLTF("./spiderman2099.glb");
 
   
-  // let spiderTl = gsap.timeline({
-  //   scrollTrigger:{
-  //     trigger:'#root',
-  //     scrub:1,
-  //     start:'top top',
-  //     end:'+=2000px',
-  //   }
-  // })
-  
+
 
   // const { rotation, position, color,intensity,hue,saturation } = useControls({
   //   rotation: {
@@ -74,18 +66,6 @@ export default function Spiderman({ timeline }) {
           z:0,
         },0);
 
-       
-       
-       
-
-        // spiderTl.to(spiderman.scene.rotation,{
-        //   y:0, 
-       
-        // }) 
-
-
-
-
   }, [timeline]);
 
 
@@ -99,7 +79,7 @@ export default function Spiderman({ timeline }) {
       </EffectComposer>  
 
       <pointLight color={"blue"} intensity={0.2} position={[-0.28, 0, 3.95]} />
-      <pointLight color={"#fff"} intensity={0.8} position={[0, 0, 3.95]} />
+      <pointLight color={"#F4E99B"} intensity={0.8} position={[0, 0, 3.95]} />
 
       
       <Environment preset={null} files="./hdr4.hdr" blur={1} />
